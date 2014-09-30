@@ -36,11 +36,15 @@ public class Main {
 				file = sdf.format(date.getTime());
 			}
 			try {
-				writer = new PrintWriter(dir + "/containerPositions_" + file + ".txt",
-						"UTF-8");
+				writer = new PrintWriter(dir + "/containerPositions_" + file
+						+ ".txt", "UTF-8");
 				writer.println("time\tcontainer_id\tstock_row\tstock_col\tstock_height\ttrain_pos\ttrain_id\tis_on_crane");
 				for (int i = 0; i < n; i++) {
-					writer.println(generateCont(date).toString());
+					if (i % 400 == 0) {
+						writer.println("ERROR400");
+					} else {
+						writer.println(generateCont(date).toString());
+					}
 				}
 				writer.close();
 			} catch (FileNotFoundException e) {
@@ -66,11 +70,13 @@ public class Main {
 		int train_pos = -1;
 		int train_id = -1;
 		boolean is_on_crane = false;
-		
-        int hour = randBetween(0, 23); //Hours will be displayed in between 9 to 22
-        int min = randBetween(0, 59);
-        int sec = randBetween(0, 59);
-        date.set(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH), hour, min,sec);
+
+		int hour = randBetween(0, 23); // Hours will be displayed in between 9
+										// to 22
+		int min = randBetween(0, 59);
+		int sec = randBetween(0, 59);
+		date.set(date.get(Calendar.YEAR), date.get(Calendar.MONTH),
+				date.get(Calendar.DAY_OF_MONTH), hour, min, sec);
 
 		int i = (int) (Math.random() * 3);
 
@@ -88,8 +94,8 @@ public class Main {
 		return new ContainerPositions(date, container_id, stock_row, stock_col,
 				stock_height, train_pos, train_id, is_on_crane);
 	}
-	
+
 	public static int randBetween(int start, int end) {
-        return start + (int)Math.round(Math.random() * (end - start));
-    }
+		return start + (int) Math.round(Math.random() * (end - start));
+	}
 }
