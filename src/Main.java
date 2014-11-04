@@ -13,12 +13,12 @@ public class Main {
 	public static void main(String[] args) {
 		if (args.length > 3) {
 			Calendar d = new GregorianCalendar();
-			d.set(Integer.parseInt(args[0]), Integer.parseInt(args[1]),
+			d.set(Integer.parseInt(args[0]), Integer.parseInt(args[1])-1,
 					Integer.parseInt(args[2]));
 			generate(d, 1000000 / 30, Integer.parseInt(args[3]));
 		} else if (args.length > 0) {
 			Calendar d = new GregorianCalendar();
-			d.set(Integer.parseInt(args[0]), Integer.parseInt(args[1]),
+			d.set(Integer.parseInt(args[0]), Integer.parseInt(args[1])-1,
 					Integer.parseInt(args[2]));
 			generate(d, 1000000 / 30, 1);
 		} else {
