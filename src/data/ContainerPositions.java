@@ -1,6 +1,8 @@
 package data;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ContainerPositions {
 	private Calendar time;
@@ -13,8 +15,7 @@ public class ContainerPositions {
 	private boolean is_on_crane;
 	@Override
 	public String toString() {
-		String t = ""+time.get(Calendar.HOUR)+time.get(Calendar.MINUTE)+time.get(Calendar.SECOND)+time.get(Calendar.MILLISECOND);
-		return t + "\t"
+		return dateToString(time) + "\t"
 				+ container_id + "\t" + stock_row + "\t"
 				+ stock_col + "\t" + stock_height + "\t"
 				+ train_pos + "\t" + train_id + "\t"
@@ -34,4 +35,11 @@ public class ContainerPositions {
 		this.train_id = train_id;
 		this.is_on_crane = is_on_crane;
 	}
+	
+	public static String dateToString(Calendar cal){
+        String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+        Date date = cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+        return sdf.format(date);
+    }
 }
